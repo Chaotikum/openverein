@@ -18,8 +18,77 @@ Satzung und Beitragsordnung vom [Chaostreff Flensburg e.V.](https://chaostreff-f
 graph LR
   start(Finde sieben Menschen) --> founding
   founding(Gründungssitzung) --> gemd
+  gemd{Gemeinnützig?} --> |ja| satzcheckf
+  gemd --> |nein| amtsgericht
+  satzcheckf{Finanzamt: Stzung checken lassen} --> |ja| amtsgericht
+  satzcheckf --> |nein| nachbessern
+  nachbessern(Nachbessern) --> satzcheckf
+  amtsgericht(Amtsgericht)
 ```
+```mermaid
+graph LR
+  cam2(DESK CAM) -->|HDMI| switch0
+  A[Presenter] -->|HDMI| switch0>Switch 0]
+  switch0 -->|HDMI| switch1>Switch 1]
+  switch1 -->|HDMI| elgato(Elgato)
+  hdmiaudiosplit1 -->|HDMI| beamer(Beamer)
+  switch1 -->|HDMI| beamer
+  cam1(SPEAKER CAM) -->coverter(LINDY Converter)
+  funkempf1(Funk-Empfänger 1) -.-|Klinke| soundcard
+  funkempf2(Funk-Empfänger 2) -.-|Klinke| soundcard
+  switch2-->|HDMI| hdmiaudiosplit1(HDMI/Audio-Splitter)
+  soundcard ===|USB| USBHub
+  USBHub(Usb Hub) ===|USB| vLap
+  elgato-->|HDMI| switch2>Switch 2]
+  dashbordPi(Dashboard Pi) -->|HDMI| switch3
+  coverter===|USB 3| vLap
+  vLap -->|HDMI| switch3>Switch3]
+  switch3 -->|HDMI| monitor1(Monitor)
+  cromecast((Chrome Cast)) -->|HDMI| switch0>Switch 0]
+  webCam(WebCam) ===|USB| USBHub
+  hdmiaudiosplit1 -.-|Klinke| speaker(Lautsprecher)
+  elgato ===|USB 3| vLap
+  funkmikro1(Funkmikro 1)
+  funkmikro2(Funkmikro 2)
 
+  classDef Elgato fill:#efefef,stroke:#000,stroke-width:1px;
+  classDef Switch fill:#ffaa11,stroke:#000,stroke-width:1px;
+  classDef SoundCard fill:#eeff00,stroke:#000,stroke-width:1px;
+  classDef HDMIAudiosplitter fill:#eeff00:stroke:#000,stroke-width:1px;
+  classDef Beamer fill:#ee00aa,stroke:#000,stroke-width:1px;
+  classDef Mic fill:#ADD8E6,stroke:#000,stroke-width:1px;
+  classDef Converter fill:#efefef,stroke:#000,stroke-width:1px;
+  classDef Pi fill:#8A2BE2,stroke:#000,stroke-width:1px;
+  classDef Free fill:#FFFFFF,stroke:#FFFFFF,stroke-width:1px;
+  classDef CromeCast fill:#ffaaff,stroke:#FFFFFF,stroke-width:1px;
+  classDef FunkMikro fill:#00ff00,stroke:#FFFFFF,stroke-width:1px;
+
+  classDef NotPresent stroke:#ff0000,stroke-width:3px;
+
+  class A cssClass;
+  class elgato Elgato;
+  class switch0,switch1,switch2,switch3 Switch;
+  class soundcard SoundCard;
+  class hdmiaudiosplit1 HDMIAudiosplitter;
+  class beamer Beamer;
+  class mic Mic;
+  class coverter Converter;
+  class dashbordPi Pi;
+  class free1 Free;
+  class free2 Free;
+  class free3 Free;
+  class cromecast CromeCast;
+  class funkmikro1 FunkMikro;
+  class funkmikro2 FunkMikro;
+  class funkempf1 FunkMikro;
+  class funkempf2 FunkMikro;
+  class hdmiaudiosplit1 NotPresent;
+  class hdmiaudiosplit1 NotPresent;
+  class speaker NotPresent;
+
+  linkStyle 14 stroke:#0000ff,stroke-width:2px;
+  linkStyle 20 stroke:#0000ff,stroke-width:2px;
+```
 ### Was ist auch noch gut zu haben
 - Mitgliedsformulare für Beitritt
 - System zur Verwaltung von Mitgliedschaften und der Mitgliedsbeiträge
