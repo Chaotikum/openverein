@@ -14,6 +14,18 @@ Satzung und Beitragsordnung vom [Chaostreff Flensburg e.V.](https://chaostreff-f
 - Geld für die Eintragung (ca. 130€)
 - Ordner für die Bürokratie
 
+```mermaid
+graph LR
+start(Finde sieben Menschen) --> founding
+founding(Gründungssitzung) --> gemd
+gemd{Gemeinnützig?} --> |ja| satzcheckf
+gemd --> |nein| amtsgericht
+satzcheckf{Finanzamt: Stzung checken lassen} --> |ja| amtsgericht
+satzcheckf --> |nein| nachbessern
+nachbessern(Nachbessern) --> satzcheckf
+amtsgericht(Amtsgericht)
+```
+
 ### Was ist auch noch gut zu haben
 - Mitgliedsformulare für Beitritt
 - System zur Verwaltung von Mitgliedschaften und der Mitgliedsbeiträge
